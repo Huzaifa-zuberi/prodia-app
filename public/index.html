@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Image Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>AI Image Generator</h1>
+    <p class="subtitle">Powered by Hugging Face</p>
+
+    <form id="genForm">
+      <div class="field">
+        <label for="prompt">Prompt</label>
+        <textarea id="prompt" rows="3" placeholder="Describe the image you want..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="negative">Negative Prompt</label>
+        <input type="text" id="negative" placeholder="Things to avoid" />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="model">Model</label>
+          <select id="model">
+            <option value="stabilityai/stable-diffusion-xl-base-1.0">SDXL 1.0</option>
+            <option value="stabilityai/stable-diffusion-2-1">Stable Diffusion 2.1</option>
+            <option value="prompthero/openjourney-v4">OpenJourney v4</option>
+            <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion 1.5</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="steps">Steps</label>
+          <input type="number" id="steps" value="25" min="5" max="50" />
+        </div>
+
+        <div class="field">
+          <label for="cfg">CFG Scale</label>
+          <input type="number" id="cfg" value="7.5" min="1" max="30" step="0.5" />
+        </div>
+      </div>
+
+      <button type="submit">Generate</button>
+    </form>
+
+    <div id="status"></div>
+    <div id="result" class="hidden">
+      <img id="output" alt="Generated image" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
